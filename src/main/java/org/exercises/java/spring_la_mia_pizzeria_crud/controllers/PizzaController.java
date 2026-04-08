@@ -1,9 +1,11 @@
 package org.exercises.java.spring_la_mia_pizzeria_crud.controllers;
 
+import org.exercises.java.spring_la_mia_pizzeria_crud.models.Pizza;
 import org.exercises.java.spring_la_mia_pizzeria_crud.repositories.PizzaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,8 +19,16 @@ public class PizzaController {
     }
 
     @GetMapping
-    public String pizzas(Model model){
+    public String index(Model model){
         model.addAttribute("pizzas", pr.findAll());
         return "pizzas";
+    }
+
+    @GetMapping("/{id}")
+    public String show(@PathVariable int id, Model model){
+        Pizza pizza = pr.findById(id)
+        .orElseThrow(() -> new RuntimeException("Pizza no found"));
+        model.addAttribute("pizza", pizza);
+        return "pizza-detail";
     }
 }

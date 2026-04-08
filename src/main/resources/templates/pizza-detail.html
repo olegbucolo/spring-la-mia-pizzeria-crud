@@ -3,12 +3,15 @@
 
 <head>
     <th:block th:replace="fragments/styles :: styles"></th:block>
-    <title>My Pizza</title>
+    <title>Document</title>
 </head>
 
 <body>
     <th:block th:replace="fragments/header :: header"></th:block>
-    <a class="d-block" th:each="pizza : ${pizzas}" th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}">PIZZAS</a>
+
+    <div th:text="${pizza.name}"></div>
+    <div th:text="${pizza.description}"></div>
+    <div th:text="${pizza.price} + ' €'"></div>
 </body>
 
 </html>
