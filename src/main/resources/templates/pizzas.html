@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <th:block th:replace="fragments/styles :: styles"></th:block>
+    <th:block th:replace="~{fragments/styles :: styles}"></th:block>
     <title>My Pizza</title>
 </head>
 
 <body>
-    <th:block th:replace="fragments/header :: header"></th:block>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
     <div class="d-flex justify-content-between p-2 border" th:each="pizza : ${pizzas}">
         <a class="" th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}"></a>
         <div class="text-end d-flex ">
